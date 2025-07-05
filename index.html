@@ -3,55 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Shree Kannikaparameshwari Vidyarthi Nilaya</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap" rel="stylesheet">
-  
-</head>
-<body style="font-family: 'Baloo Tamma 2', sans-serif; margin:0; background:#fff8f0; color:#2e2e2e;">
-
-
-<header style="background:#8e1515; color:white; padding:1rem; text-align:center;">
-  <h1>ಶ್ರೀ ಕನ್ನಿಕಾಪರಮೇಶ್ವರಿ ವಿದ್ಯಾರ್ಥಿ ನಿಲಯ, ರಾಯಚೂರು</h1>
-  <h2>Shree Kannikaparameshwari Vidyarthi Nilaya, Raichur</h2>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    .bulletin {
-      background: #ffefd5;
-      padding: 0.5rem;
+    .multiline-scroll-container {
+      background: #fff2dc;
       color: #8e1515;
       font-weight: bold;
-      white-space: nowrap;
+      height: 60px;
       overflow: hidden;
+      position: relative;
+      padding: 0.5rem 1rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .bulletin span {
+    .multiline-scroll {
       display: inline-block;
-      padding-left: 100%;
-      animation: scroll-left 15s linear infinite;
+      position: absolute;
+      animation: scroll-up 12s linear infinite;
     }
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+    @keyframes scroll-up {
+      0% { top: 100%; }
+      100% { top: -100%; }
+    }
+    .multiline-scroll div {
+      margin-bottom: 1rem;
     }
   </style>
+</head>
+<body>
+
+<audio autoplay loop>
+  <source src="kanikaparameshwari.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<header>
+  <h1>ಶ್ರೀ ಕನ್ನಿಕಾಪರಮೇಶ್ವರಿ ವಿದ್ಯಾರ್ಥಿ ನಿಲಯ, ರಾಯಚೂರು</h1>
+  <h2>Shree Kannikaparameshwari Vidyarthi Nilaya, Raichur</h2>
+  <p>ಹಳ್ಳಿ ವಿದ್ಯಾರ್ಥಿಗಳ ಮಿಲನ - 2025 | Village Alumni Meet – 2025</p>
+  <p>ದಿನಾಂಕ: 15-07-2025 | Date: 15-07-2025</p>
 </header>
 
+<div class="multiline-scroll-container">
+  <div class="multiline-scroll" id="bulletin-messages">
+    <!-- Messages will be dynamically inserted here -->
+  </div>
+</div>
 
-<nav style="background:#8e1515; padding: 1rem; text-align:center;">
-  <a href="index.html" style="color:white; margin:0 10px;">Home</a>
-  <a href="ganesha.html" style="color:white; margin:0 10px;">Ganesh</a>
-  <a href="vasavi.html" style="color:white; margin:0 10px;">Vasavi Matha</a>
-  <a href="founder.html" style="color:white; margin:0 10px;">Founder</a>
-  <a href="articles.html" style="color:white; margin:0 10px;">Articles</a>
-  <a href="contact.html" style="color:white; margin:0 10px;">Contact</a>
-</nav>
+<section class="section">
+  <img src="images/hostel.jpg" alt="Hostel Photo" class="image-center">
+  <img src="images/ganesha.jpg" alt="Shree Ganesh" class="image-center">
+</section>
 
-<section><img src="images/hostel.jpg" alt="Hostel" style="display:block; margin:auto; max-width:100%;"></section>
+<!-- Rest of the site content remains unchanged -->
 
-<footer style="background:#8e1515; color:white; padding:1rem; text-align:center;">
-  <p>&copy; 2025 Shree Kannikaparameshwari Vidyarthi Nilaya Alumni Committee</p>
-</footer>
+<script>
+  const messages = [
+    { en: "🎉 Welcome to the 2025 Alumni Meet", kn: "🎉 2025 ಪುರಾತನ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಮಾವೇಶಕ್ಕೆ ಸ್ವಾಗತ" },
+    { en: "📍 Venue: G.P.S Residency & Restaurant - Mantralaya", kn: "📍 ಸ್ಥಳ: ಜಿ.ಪಿ.ಎಸ್ ರೆಸಿಡೆನ್ಸಿ, ಮಂತ್ರಾಲಯ" },
+    { en: "📞 Contact: 7204071733", kn: "📞 ಸಂಪರ್ಕಿಸಿ: 7204071733" },
+    { en: "🙏 Jai Vasavi Matha", kn: "🙏 ಜಯ ವಾಸವಿ ಮಾತೆ" },
+    { en: "🎶 Kanikaparameshwari Bhajane will be sung live!", kn: "🎶 ಕನಿಕಾಪರಮೇಶ್ವರಿ ಭಜನೆ ನೇರವಾಗಿ ಹಾಡಲಾಗುತ್ತದೆ!" },
+    { en: "💌 Designed by Tarun Chettam", kn: "💌 ವಿನ್ಯಾಸ: ತರುಣ್ ಚೆಟ್ಟಂ" }
+  ];
 
+  const container = document.getElementById("bulletin-messages");
+  messages.forEach(msg => {
+    const line = document.createElement("div");
+    line.innerHTML = `${msg.en}<br>${msg.kn}`;
+    container.appendChild(line);
+  });
+</script>
 
 </body>
 </html>
