@@ -7,27 +7,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .multiline-scroll-container {
+    .horizontal-scroll-container {
       background: #fff2dc;
       color: #8e1515;
       font-weight: bold;
-      height: 60px;
+      white-space: nowrap;
       overflow: hidden;
       position: relative;
       padding: 0.5rem 1rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .multiline-scroll {
+    .horizontal-scroll {
       display: inline-block;
-      position: absolute;
-      animation: scroll-up 12s linear infinite;
+      animation: scroll-left 30s linear infinite;
     }
-    @keyframes scroll-up {
-      0% { top: 100%; }
-      100% { top: -100%; }
-    }
-    .multiline-scroll div {
-      margin-bottom: 1rem;
+    @keyframes scroll-left {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
   </style>
 </head>
