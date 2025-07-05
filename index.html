@@ -29,11 +29,17 @@
 </head>
 <body>
   
-<audio controls autoplay loop>
+<audio id="bg-music" autoplay loop>
   <source src="kanikaparameshwari.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
+<button id="music-toggle" style="
+  position: fixed; bottom: 1rem; right: 1rem;
+  background: #8e1515; color: white; border: none;
+  padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;
+  z-index: 999;
+">⏸ Pause Music</button>
 
 <header>
   <h1>ಶ್ರೀ ಕನ್ನಿಕಾಪರಮೇಶ್ವರಿ ವಿದ್ಯಾರ್ಥಿ ನಿಲಯ, ರಾಯಚೂರು</h1>
@@ -61,18 +67,29 @@
     { en: "🙏 Jai Vasavi Matha", kn: "🙏 ಜಯ ವಾಸವಿ ಮಾತೆ" },
     { en: "💌 Designed by Tarun Chettam", kn: "💌 ವಿನ್ಯಾಸ: ತರುಣ್ ಚೆಟ್ಟಂ" }
   ];
-
+//Text Scrolling
   const container = document.getElementById("bulletin-messages");
   let scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
   container.innerHTML = scrollText;
-  window.addEventListener('DOMContentLoaded', () => {
+  // Audio
+window.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('bg-music');
-    audio.src = 'kanikaparameshwari.mp3';
+    const toggleBtn = document.getElementById('music-toggle');
+
+    // Try playing immediately
     audio.play().catch(() => {
-      console.warn('Autoplay was blocked. Will try after user interaction.');
-      document.body.addEventListener('click', () => {
+      console.warn('Autoplay blocked — waiting for user interaction.');
+      document.body.addEventListener('click', () => audio.play(), { once: true });
+    });
+
+    toggleBtn.addEventListener('click', () => {
+      if (audio.paused) {
         audio.play();
-      }, { once: true });
+        toggleBtn.textContent = '⏸ Pause Music';
+      } else {
+        audio.pause();
+        toggleBtn.textContent = '▶ Play Music';
+      }
     });
   });
 </script>
