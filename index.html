@@ -65,6 +65,16 @@
   const container = document.getElementById("bulletin-messages");
   let scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
   container.innerHTML = scrollText;
+  window.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bg-music');
+    audio.src = 'kanikaparameshwari.mp3';
+    audio.play().catch(() => {
+      console.warn('Autoplay was blocked. Will try after user interaction.');
+      document.body.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
 </script>
 <nav style="background:#8e1515; padding: 1rem; text-align:center;">
   <a href="index.html" style="color:white; margin:0 10px;">Home</a>
