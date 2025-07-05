@@ -29,7 +29,7 @@
 </head>
 <body>
   
-<audio id="bg-music" autoplay loop>
+<audio id="bg-music" loop>
   <source src="kanikaparameshwari.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -72,15 +72,24 @@
   let scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
   container.innerHTML = scrollText;
   // Audio
-window.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('bg-music');
     const toggleBtn = document.getElementById('music-toggle');
 
-    // Try playing immediately
-    audio.play().catch(() => {
-      console.warn('Autoplay blocked — waiting for user interaction.');
-      document.body.addEventListener('click', () => audio.play(), { once: true });
-    });
+    // Try to autoplay — fallback on user click
+    const tryPlay = () => {
+      audio.play().then(() => {
+        toggleBtn.textContent = '⏸ Pause Music';
+      }).catch(() => {
+        console.warn('Autoplay blocked. Waiting for user interaction.');
+        document.body.addEventListener('click', () => {
+          audio.play();
+          toggleBtn.textContent = '⏸ Pause Music';
+        }, { once: true });
+      });
+    };
+
+    tryPlay();
 
     toggleBtn.addEventListener('click', () => {
       if (audio.paused) {
