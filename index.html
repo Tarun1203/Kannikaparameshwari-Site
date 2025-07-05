@@ -30,16 +30,24 @@
 <body>
   
 <audio id="bg-music" loop>
-  <source src="kanikaparameshwari.mp3" type="audio/mpeg">
+  <source src="kanikaparameshwari.mp3" type="audio/mpeg" />
   Your browser does not support the audio element.
 </audio>
 
 <button id="music-toggle" style="
-  position: fixed; bottom: 1rem; right: 1rem;
-  background: #8e1515; color: white; border: none;
-  padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #8e1515;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
   z-index: 999;
 ">⏸ Pause Music</button>
+
 
 <header>
   <h1>ಶ್ರೀ ಕನ್ನಿಕಾಪರಮೇಶ್ವರಿ ವಿದ್ಯಾರ್ಥಿ ನಿಲಯ, ರಾಯಚೂರು</h1>
@@ -72,34 +80,40 @@
   let scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
   container.innerHTML = scrollText;
   // Audio
-  document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('music-toggle');
+ const audio = document.getElementById("bg-music");
+  const toggleBtn = document.getElementById("music-toggle");
 
-    // Try to autoplay — fallback on user click
-    const tryPlay = () => {
-      audio.play().then(() => {
-        toggleBtn.textContent = '⏸ Pause Music';
-      }).catch(() => {
-        console.warn('Autoplay blocked. Waiting for user interaction.');
-        document.body.addEventListener('click', () => {
-          audio.play();
-          toggleBtn.textContent = '⏸ Pause Music';
-        }, { once: true });
-      });
-    };
-
-    tryPlay();
-
-    toggleBtn.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play();
-        toggleBtn.textContent = '⏸ Pause Music';
-      } else {
-        audio.pause();
-        toggleBtn.textContent = '▶ Play Music';
-      }
+  // Try to autoplay
+  function initAudio() {
+    audio.play().then(() => {
+      toggleBtn.textContent = "⏸ Pause Music";
+    }).catch((err) => {
+      console.warn("Autoplay blocked. Waiting for interaction...");
+      toggleBtn.textContent = "▶ Play Music";
     });
+  }
+
+  // Button toggles playback
+  toggleBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      toggleBtn.textContent = "⏸ Pause Music";
+    } else {
+      audio.pause();
+      toggleBtn.textContent = "▶ Play Music";
+    }
+  });
+
+  // Try to autoplay on load and re-try on first user interaction
+  document.addEventListener("DOMContentLoaded", () => {
+    initAudio();
+    document.body.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play().then(() => {
+          toggleBtn.textContent = "⏸ Pause Music";
+        });
+      }
+    }, { once: true });
   });
 </script>
 <nav style="background:#8e1515; padding: 1rem; text-align:center;">
