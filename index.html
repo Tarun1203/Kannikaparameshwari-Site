@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="kn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shree Kannikaparameshwari Vidyarthi Nilaya</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     .horizontal-scroll-container {
       background: #fff2dc;
@@ -15,7 +15,7 @@
       overflow: hidden;
       position: relative;
       padding: 0.5rem 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .horizontal-scroll {
       display: inline-block;
@@ -28,7 +28,7 @@
   </style>
 </head>
 <body>
-  
+
 <audio id="bg-music" loop>
   <source src="kanikaparameshwari.mp3" type="audio/mpeg" />
   Your browser does not support the audio element.
@@ -48,11 +48,11 @@
   z-index: 999;
 ">⏸ Pause Music</button>
 
-
 <header>
   <h1>ಶ್ರೀ ಕನ್ನಿಕಾಪರಮೇಶ್ವರಿ ವಿದ್ಯಾರ್ಥಿ ನಿಲಯ, ರಾಯಚೂರು</h1>
   <h2>Shree Kannikaparameshwari Vidyarthi Nilaya, Raichur</h2>
- 
+  <p>ಹಳ್ಳಿ ವಿದ್ಯಾರ್ಥಿಗಳ ಮಿಲನ - 2025 | Village Alumni Meet – 2025</p>
+  <p>ದಿನಾಂಕ: 15-07-2025 | Date: 15-07-2025</p>
 </header>
 
 <div class="horizontal-scroll-container">
@@ -60,40 +60,39 @@
     <!-- Messages will be dynamically inserted here -->
   </div>
 </div>
-<section class="section">
-  <img src="images/hostel.jpg" alt="Hostel Photo" class="image-center">
 
+<section class="section">
+  <img src="images/hostel.jpg" alt="Hostel Photo" class="image-center" />
 </section>
 
-<!-- Rest of the site content remains unchanged -->
-
 <script>
- const messages = [
+  const messages = [
     { en: "🎉 Welcome to the 2025 Alumni Meet", kn: "🎉 2025 ಪುರಾತನ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಮಾವೇಶಕ್ಕೆ ಸ್ವಾಗತ" },
     { en: "📍 Venue: G.P.S Residency & Restaurant - Mantralaya", kn: "📍 ಸ್ಥಳ: ಜಿ.ಪಿ.ಎಸ್ ರೆಸಿಡೆನ್ಸಿ, ಮಂತ್ರಾಲಯ" },
     { en: "📞 Contact: 7204071733", kn: "📞 ಸಂಪರ್ಕಿಸಿ: 7204071733" },
     { en: "🙏 Jai Vasavi Matha", kn: "🙏 ಜಯ ವಾಸವಿ ಮಾತೆ" },
+    { en: "🎶 Kanikaparameshwari Bhajane will be sung live!", kn: "🎶 ಕನಿಕಾಪರಮೇಶ್ವರಿ ಭಜನೆ ನೇರವಾಗಿ ಹಾಡಲಾಗುತ್ತದೆ!" },
     { en: "💌 Designed by Tarun Chettam", kn: "💌 ವಿನ್ಯಾಸ: ತರುಣ್ ಚೆಟ್ಟಂ" }
   ];
-//Text Scrolling
+
   const container = document.getElementById("bulletin-messages");
-  let scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
+  const scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
   container.innerHTML = scrollText;
-  // Audio
- const audio = document.getElementById("bg-music");
+</script>
+
+<script>
+  const audio = document.getElementById("bg-music");
   const toggleBtn = document.getElementById("music-toggle");
 
-  // Try to autoplay
   function initAudio() {
     audio.play().then(() => {
       toggleBtn.textContent = "⏸ Pause Music";
-    }).catch((err) => {
+    }).catch(() => {
       console.warn("Autoplay blocked. Waiting for interaction...");
       toggleBtn.textContent = "▶ Play Music";
     });
   }
 
-  // Button toggles playback
   toggleBtn.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
@@ -104,7 +103,6 @@
     }
   });
 
-  // Try to autoplay on load and re-try on first user interaction
   document.addEventListener("DOMContentLoaded", () => {
     initAudio();
     document.body.addEventListener("click", () => {
@@ -116,6 +114,7 @@
     }, { once: true });
   });
 </script>
+
 <nav style="background:#8e1515; padding: 1rem; text-align:center;">
   <a href="index.html" style="color:white; margin:0 10px;">Home</a>
   <a href="ganesha.html" style="color:white; margin:0 10px;">Ganesh</a>

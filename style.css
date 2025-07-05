@@ -1,79 +1,23 @@
 
-/* Root styling */
 body {
   font-family: 'Baloo Tamma 2', sans-serif;
   margin: 0;
   background: #fff8f0;
   color: #2e2e2e;
 }
-
 header, footer {
   background: #8e1515;
   color: white;
   padding: 1rem;
   text-align: center;
 }
-
-nav {
-  background: #8e1515;
-  text-align: center;
-  padding: 1rem;
-}
-
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Section styling */
-section {
+.section {
   padding: 2rem;
+  text-align: center;
 }
-
-img {
+.image-center {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 1rem auto;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul li::before {
-  content: "• ";
-  color: #8e1515;
-  font-weight: bold;
-}
-
-/* Contact section */
-.contact {
-  background: #f9e8e8;
-  padding: 2rem;
-  border-top: 2px solid #8e1515;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  nav a {
-    margin: 5px;
-  }
-
-  section {
-    padding: 1rem;
-  }
 }
