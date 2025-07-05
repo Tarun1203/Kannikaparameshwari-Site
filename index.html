@@ -41,12 +41,11 @@
   <p>ದಿನಾಂಕ: 15-07-2025 | Date: 15-07-2025</p>
 </header>
 
-<div class="multiline-scroll-container">
-  <div class="multiline-scroll" id="bulletin-messages">
+<<div class="horizontal-scroll-container">
+  <div class="horizontal-scroll" id="bulletin-messages">
     <!-- Messages will be dynamically inserted here -->
   </div>
 </div>
-
 <section class="section">
   <img src="images/hostel.jpg" alt="Hostel Photo" class="image-center">
   <img src="images/ganesha.jpg" alt="Shree Ganesh" class="image-center">
@@ -55,7 +54,7 @@
 <!-- Rest of the site content remains unchanged -->
 
 <script>
-  const messages = [
+ const messages = [
     { en: "🎉 Welcome to the 2025 Alumni Meet", kn: "🎉 2025 ಪುರಾತನ ವಿದ್ಯಾರ್ಥಿಗಳ ಸಮಾವೇಶಕ್ಕೆ ಸ್ವಾಗತ" },
     { en: "📍 Venue: G.P.S Residency & Restaurant - Mantralaya", kn: "📍 ಸ್ಥಳ: ಜಿ.ಪಿ.ಎಸ್ ರೆಸಿಡೆನ್ಸಿ, ಮಂತ್ರಾಲಯ" },
     { en: "📞 Contact: 7204071733", kn: "📞 ಸಂಪರ್ಕಿಸಿ: 7204071733" },
@@ -65,11 +64,8 @@
   ];
 
   const container = document.getElementById("bulletin-messages");
-  messages.forEach(msg => {
-    const line = document.createElement("div");
-    line.innerHTML = `${msg.en}<br>${msg.kn}`;
-    container.appendChild(line);
-  });
+  let scrollText = messages.map(msg => `${msg.en} - ${msg.kn}`).join(" • ");
+  container.innerHTML = scrollText;
 </script>
 
 </body>
